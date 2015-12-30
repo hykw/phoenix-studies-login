@@ -46,3 +46,27 @@ $ mix phoenix.gen.model User users email:string hashed_password:string lastlogin
 
 ***** 【commit】 *****
 
+- テーブル作成
+
+```bash
+mix ecto.migrate
+```
+
+```
+mysql> desc users;
++-----------------+---------------------+------+-----+---------+----------------+
+| Field           | Type                | Null | Key | Default | Extra          |
++-----------------+---------------------+------+-----+---------+----------------+
+| id              | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+| email           | varchar(255)        | NO   | UNI | NULL    |                |
+| hashed_password | varchar(255)        | NO   |     | NULL    |                |
+| lastlogin_at    | datetime            | YES  |     | NULL    |                |
+| inserted_at     | datetime            | NO   |     | NULL    |                |
+| updated_at      | datetime            | NO   |     | NULL    |                |
++-----------------+---------------------+------+-----+---------+----------------+
+```
+
+***** 【commit】 *****
+
+
+
