@@ -22,6 +22,10 @@ defmodule LoginStudy.Router do
     get  "/register", RegisterController, :new
     post "/register", RegisterController, :create
 
+    # ログイン
+    get    "/login",  LoginController, :new
+    post   "/login",  LoginController, :create
+
   end
 
   # Other scopes may use custom stacks.

@@ -110,3 +110,9 @@ Userモデルにロジックや validation 追加して、ユーザ登録でき�
 
 ***** 【commit】 *****
 
+## /login の準備
+
+/login の画面や view を準備
+
+***** 【commit】 *****
+
