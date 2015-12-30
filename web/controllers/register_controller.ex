@@ -23,8 +23,11 @@ defmodule LoginStudy.RegisterController do
 
     # http://www.phoenixframework.org/docs/ecto-models
     case User.create(changeset, LoginStudy.Repo) do
-      {:ok, _user} ->
+      # ユーザ登録時、ログインも一緒に
+
+      {:ok, user} ->
         conn
+        |> put_session(:current_user, user.id)
         |> put_flash(:info, "アカウントを作成(メールアドレス = " <> changeset.params["email"] <> ")")
         |> redirect(to: page_path(conn, :index))
 

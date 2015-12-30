@@ -30,4 +30,15 @@ defmodule LoginStudy.LoginController do
     end
   end
 
+
+  @doc """
+  ログアウト
+  """
+  def delete(conn, _) do
+    conn
+    |> delete_session(:current_user)
+    |> put_flash(:info, "ログアウトしました")
+    |> redirect(to: page_path(conn, :index))
+  end
+
 end

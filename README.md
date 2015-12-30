@@ -15,11 +15,12 @@ flush privileges;
 
 ```bash
 $ sudo yum install inotify-tools
-
 $ mix archive.install https://github.com/phoenixframework/phoenix/releases/download/v1.1.0/phoenix_new-1.1.0.ez
-
 $ mix phoenix.new login_study --no-brunch --database mysql
 ```
+
+※--no-brunch を指定しているため、phoenix_html.js は自分で配置しないと、form で `method: get` 以外のリンクを設置すると動かなくなる
+
 
 ***** 【commit】 *****
 
@@ -120,4 +121,15 @@ Userモデルにロジックや validation 追加して、ユーザ登録でき�
 
 ***** 【commit】 *****
 
+
+## /logout の実装
+
+--no-brunch を指定しているため、js を自分で生成・設置
+
+```bash
+ cat deps/phoenix_html/priv/static/phoenix_html.js >> priv/static/js/app.js
+```
+
+
+***** 【commit】 *****
 
