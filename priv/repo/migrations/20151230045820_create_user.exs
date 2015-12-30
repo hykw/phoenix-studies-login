@@ -3,12 +3,13 @@ defmodule LoginStudy.Repo.Migrations.CreateUser do
 
   def change do
     create table(:users) do
-      add :email, :string
-      add :hashed_password, :string
+      add :email, :string, null: false
+      add :hashed_password, :string, null: false
       add :lastlogin_at, :datetime
 
       timestamps
     end
 
+    create unique_index(:users, [:email])
   end
 end

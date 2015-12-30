@@ -21,6 +21,8 @@ $ mix archive.install https://github.com/phoenixframework/phoenix/releases/downl
 $ mix phoenix.new login_study --no-brunch --database mysql
 ```
 
+***** 【commit】 *****
+
 # ロジック追加
 ## ユーザテーブルの追加
 
@@ -32,8 +34,15 @@ $ mix phoenix.new login_study --no-brunch --database mysql
 - 作成日、更新日
 
 ### コマンド
-- Userモデル、usersテーブル
+Userモデル、usersテーブルの作成準備
 
 ```bash
 $ mix phoenix.gen.model User users email:string hashed_password:string lastlogin_at:datetime
 ```
+
+***** 【commit】 *****
+
+- マイグレーションファイルで、カラムにnull制約、unique制約を追加
+
+***** 【commit】 *****
+
