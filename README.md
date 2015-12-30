@@ -104,3 +104,9 @@ $ mix phoenix.routes
 
 ***** 【commit】 *****
 
+Userモデルにロジックや validation 追加して、ユーザ登録できるように
+  ※Phoenix 1.1.0 の gettext による仕様変更にも対応
+  https://gist.github.com/chrismccord/557ef22e2a03a7992624
+
+***** 【commit】 *****
+

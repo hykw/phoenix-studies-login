@@ -5,10 +5,12 @@
   <%= if form.errors != [] do %>
     <div class="alert alert-danget">
       <p>入力値が不正です</p>
+
       <ul>
         <%= for {attr, message} <- form.errors do %>
-          <li><%= humanize(attr) %> <%= message %></li>
-        <% end %>
+          <li><%= humanize(attr) %> <%= translate_error(message) %></li>
+      <% end %>
+
       </ul>
     </div>
   <% end %>
@@ -17,7 +19,7 @@
 
   <div class="form-group">
     <label>メールアドレス</label>
-    <%= email_input form, :mail_address, class: "form-control" %>
+    <%= email_input form, :email, class: "form-control" %>
   </div>
 
   <div class="form-group">
