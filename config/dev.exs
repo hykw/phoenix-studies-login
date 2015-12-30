@@ -36,8 +36,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :login_study, LoginStudy.Repo,
   adapter: Ecto.Adapters.MySQL,
-  username: "root",
-  password: "",
-  database: "login_study_dev",
+  username: "testuser",
+  password: "testpass",
+  database: "phoenix_studies_login",
   hostname: "localhost",
   pool_size: 10

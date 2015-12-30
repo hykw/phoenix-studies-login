@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :login_study, LoginStudy.Repo,
   adapter: Ecto.Adapters.MySQL,
-  username: "root",
-  password: "",
-  database: "login_study_test",
+  username: "testuser",
+  password: "testpass",
+  database: "phoenix_studies_login",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
