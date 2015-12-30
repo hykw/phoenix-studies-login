@@ -3,8 +3,8 @@ defmodule LoginStudy.UserTest do
 
   alias LoginStudy.User
 
-  @valid_attrs %{email: "some content", hashed_password: "some content", lastlogin_at: "2010-04-17 14:00:00"}
-  @invalid_attrs %{}
+  @valid_attrs %{email: "foo@example.jp", password: "1234"}
+  @invalid_attrs %{email: "foo@example.jp", password: "12345"}
 
   test "changeset with valid attributes" do
     changeset = User.changeset(%User{}, @valid_attrs)
