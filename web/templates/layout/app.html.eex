@@ -17,8 +17,16 @@
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
 
-<li><%= link "ユーザ登録", to: register_path(@conn, :new) %></li>
-<li><%= link "ログイン", to: login_path(@conn, :new) %></li>
+          <%= if logged_in?(@conn) do %>
+            <li><%= current_user(@conn).email %></li>
+<li>ログアウト</li>
+          <% else %>
+            <li><%= link "ユーザ登録", to: register_path(@conn, :new) %></li>
+            <li><%= link "ログイン", to: login_path(@conn, :new) %></li>
+          <% end %>
+
+
+
 
 <!--
             <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>

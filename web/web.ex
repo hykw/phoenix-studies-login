@@ -52,6 +52,13 @@ defmodule LoginStudy.Web do
       import LoginStudy.Router.Helpers
       import LoginStudy.ErrorHelpers
       import LoginStudy.Gettext
+
+      # http://www.phoenixframework.org/docs/templates
+      # ヘルパー関数を view や template から呼べるようにする
+      # (use LoginStudy.Web, :view の箇所で、呼べるように）
+      import LoginStudy.Login, only: [current_user: 1, logged_in?: 1]
+
+
     end
   end
 
