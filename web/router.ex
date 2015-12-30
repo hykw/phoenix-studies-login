@@ -17,6 +17,11 @@ defmodule LoginStudy.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+
+    # 登録処理
+    get  "/register", RegisterController, :new
+    post "/register", RegisterController, :create
+
   end
 
   # Other scopes may use custom stacks.

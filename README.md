@@ -70,3 +70,24 @@ mysql> desc users;
 
 
 
+
+## ルーティングの追加
+- /
+- /register
+  - GET: 初期表示
+  - POST: 登録
+- /login
+- /logout
+
+```bash
+$ vi web/router.ex
+
+$ mix phoenix.routes
+     page_path  GET   /          LoginStudy.PageController :index
+     register_path  GET   /register  LoginStudy.RegisterController :new
+     register_path  POST  /register  LoginStudy.RegisterController :create
+```
+
+***** 【commit】 *****
+
+
