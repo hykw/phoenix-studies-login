@@ -1,0 +1,33 @@
+<h1>ユーザ登録</h1>
+
+<%= form_for @changeset, register_path(@conn, :create), fn form -> %>
+
+  <%= if form.errors != [] do %>
+    <div class="alert alert-danget">
+      <p>入力値が不正です</p>
+      <ul>
+        <%= for {attr, message} <- form.errors do %>
+          <li><%= humanize(attr) %> <%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="form-group">
+    <label>メールアドレス</label>
+    <%= email_input form, :mail_address, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>パスワード</label>
+    <%= password_input form, :password, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "登録する", class: "btn btn-primary" %>
+  </div>
+
+
+<% end %>
