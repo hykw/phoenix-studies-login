@@ -56,7 +56,7 @@ defmodule LoginStudy.User do
 
   defp now() do
     # http://qiita.com/FL4TLiN3/items/5fcf57677a1c0123637d
-    Ecto.DateTime.from_erl(:calendar.local_time)
+    Ecto.DateTime.from_erl(:calendar.universal_time)
   end
 
 
