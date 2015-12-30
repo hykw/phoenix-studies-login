@@ -90,4 +90,7 @@ $ mix phoenix.routes
 
 ***** 【commit】 *****
 
+ヘッダに /register へのリンクを追加
+
+***** 【commit】 *****
 
