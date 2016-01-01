@@ -27,3 +27,8 @@ import_config "#{Mix.env}.exs"
 config :phoenix, :generators,
   migration: true,
   binary_id: false
+
+### Gettext の設定
+# http://stackoverflow.com/questions/34538502/how-to-set-locale-for-errors-po
+# http://hexdocs.pm/gettext/Gettext.html
+config :login_study, LoginStudy.Gettext, default_locale: "ja"

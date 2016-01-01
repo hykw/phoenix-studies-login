@@ -130,6 +130,13 @@ Userモデルにロジックや validation 追加して、ユーザ登録でき�
  cat deps/phoenix_html/priv/static/phoenix_html.js >> priv/static/js/app.js
 ```
 
+***** 【commit】 *****
+
+## エラーメッセージの日本語化
+
+外出しした .po ファイルを取り込み
+
+https://github.com/hykw/phoenix-locale_ja
 
 ***** 【commit】 *****
 
