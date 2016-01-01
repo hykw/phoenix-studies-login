@@ -35,6 +35,8 @@ defmodule LoginStudy.User do
     |> validate_format(:password, ~r/^[0-9]*$/)
   end
 
+    #    |> validate_format(:password, ~r/^[0-9]*$/, [message: "あいうえお"])
+
 
   @doc """
   userレコードを作成
