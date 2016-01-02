@@ -12,7 +12,7 @@ defmodule LoginStudy.RegisterController do
   def new(conn, _params) do
     changeset = User.changeset(%User{})
 
-    render(conn, "new.html", changeset: changeset)
+    render(conn, :new, changeset: changeset)
   end
 
   @doc """
@@ -34,7 +34,7 @@ defmodule LoginStudy.RegisterController do
       {:error, changeset} ->
         conn
         |> put_flash(:info, "アカウント作成失敗")
-        |> render("new.html", changeset: changeset)
+        |> render(:new, changeset: changeset)
     end
 
   end
