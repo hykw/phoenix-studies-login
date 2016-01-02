@@ -21,6 +21,9 @@ defmodule LoginStudy.LoginController do
         # ログイン時間の更新
         User.update_lastlogin(user, LoginStudy.Repo)
 
+        # ログイン回数の更新
+        User.update_login_times(user, LoginStudy.Repo)
+
         conn
         |> put_session(:current_user, user.id)
         |> put_flash(:info, "ログインしました(id = " <> to_string(user.id) <> ")")

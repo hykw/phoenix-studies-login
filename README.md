@@ -50,7 +50,7 @@ $ mix phoenix.gen.model User users email:string hashed_password:string lastlogin
 - テーブル作成
 
 ```bash
-mix ecto.migrate
+$ mix ecto.migrate
 ```
 
 ```
@@ -150,6 +150,24 @@ def update_lastlogin(user, repo) do
   repo.update user
 end
 ```
+
+***** 【commit】 *****
+
+## ログイン回数登録用のカラムを追加
+
+```bash
+$ mix ecto.gen.migration add_logintimes_to_users
+```
+
+- マイグレーションファイルに、新しいカラムを追加
+
+- テーブル作成
+
+```bash
+$ mix ecto.migrate
+```
+
+- ログイン回数を+1するロジック追加
 
 ***** 【commit】 *****
 

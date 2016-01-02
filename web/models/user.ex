@@ -5,6 +5,7 @@ defmodule LoginStudy.User do
     field :email, :string
     field :hashed_password, :string
     field :lastlogin_at, Ecto.DateTime
+    field :login_times, :integer
 
     # 保存しないので virtual field として定義
     field :password, :string, virtual: true
@@ -70,5 +71,16 @@ defmodule LoginStudy.User do
 
     repo.update user
   end
+
+  @doc """
+  ログイン回数の更新
+  """
+  def update_login_times(user, repo) do
+    user = repo.get(LoginStudy.User, user.id)
+    user = %LoginStudy.User{ user | login_times: user.login_times+1 }
+
+    repo.update user
+  end
+
 
 end
