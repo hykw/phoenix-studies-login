@@ -171,3 +171,7 @@ $ mix ecto.migrate
 
 ***** 【commit】 *****
 
+- struct を強引に更新して repo.update してた処理を、changeset 経由に修正
+
+***** 【commit】 *****
+

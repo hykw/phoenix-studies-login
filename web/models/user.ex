@@ -13,8 +13,8 @@ defmodule LoginStudy.User do
     timestamps
   end
 
-  @required_fields ~w(email password)
-  @optional_fields ~w()
+  @required_fields ~w(email hashed_password)
+  @optional_fields ~w(lastlogin_at login_times)
 
 
   @doc """
@@ -66,10 +66,29 @@ defmodule LoginStudy.User do
   ログイン時間の更新
   """
   def update_lastlogin(user, repo) do
-    user = repo.get(LoginStudy.User, user.id)
-    user = %LoginStudy.User{ user | lastlogin_at: now() }
 
-    repo.update user
+    """
+    validation をすっ飛ばしたい場合は change() を使う
+
+      # changsetのchanges に直接injectするため、validationは飛ばされちゃう
+      user = repo.get(LoginStudy.User, user.id)
+      changeset = change(user, %{email: "xxx"})
+      repo.update(changeset)
+    """
+
+    user = repo.get(LoginStudy.User, user.id)
+
+    changeset = LoginStudy.User.changeset(user, %{lastlogin_at: now()})
+    # changeset = LoginStudy.User.changeset(user, %{email: "aaaa.com"})
+
+    """
+    ここで changeset.valid? が true かどうかのチェックをいれてもいいけど、
+      ・repo.update を呼び出してもエラーになるわけでもないし（もちろんUPDATEもされない）
+      ・ユーザ入力値が無いので、エラーになる可能性が低い
+      ・エラーになったとしても、ログイン処理自体は続行しても支障がない
+    ので、ノーチェックでも良さそう(これが Elixir way っぽい？)
+    """
+    repo.update changeset
   end
 
   @doc """
@@ -77,9 +96,9 @@ defmodule LoginStudy.User do
   """
   def update_login_times(user, repo) do
     user = repo.get(LoginStudy.User, user.id)
-    user = %LoginStudy.User{ user | login_times: user.login_times+1 }
 
-    repo.update user
+    changeset = LoginStudy.User.changeset(user, %{login_times: user.login_times+1})
+    repo.update changeset
   end
 
 
