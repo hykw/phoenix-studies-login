@@ -140,3 +140,16 @@ https://github.com/hykw/phoenix-locale_ja
 
 ***** 【commit】 *****
 
+## ログイン時間の更新
+
+```elixir
+def update_lastlogin(user, repo) do
+  user = repo.get(LoginStudy.User, user.id)
+  user = %LoginStudy.User{ user | lastlogin_at: now() }
+
+  repo.update user
+end
+```
+
+***** 【commit】 *****
+

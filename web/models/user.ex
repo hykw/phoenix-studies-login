@@ -61,5 +61,14 @@ defmodule LoginStudy.User do
     Ecto.DateTime.from_erl(:calendar.universal_time)
   end
 
+  @doc """
+  ログイン時間の更新
+  """
+  def update_lastlogin(user, repo) do
+    user = repo.get(LoginStudy.User, user.id)
+    user = %LoginStudy.User{ user | lastlogin_at: now() }
+
+    repo.update user
+  end
 
 end
