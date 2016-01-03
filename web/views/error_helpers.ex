@@ -30,7 +30,6 @@ defmodule LoginStudy.ErrorHelpers do
   end
 
   def translate_error(msg) do
-    Gettext.put_locale(LoginStudy.Gettext, "ja")
     Gettext.dgettext(LoginStudy.Gettext, "errors", msg)
   end
 end
