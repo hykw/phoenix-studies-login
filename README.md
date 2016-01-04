@@ -183,4 +183,7 @@ logger_file_backend を追加して、backendsを登録
 
 ***** 【commit】 *****
 
+- PlugでLoggerを作って、標準のLoggerと差し替え、Webアクセスのログを出力するようにする
+
+***** 【commit】 *****
 

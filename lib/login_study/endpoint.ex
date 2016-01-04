@@ -20,7 +20,10 @@ defmodule LoginStudy.Endpoint do
   end
 
   plug Plug.RequestId
-  plug Plug.Logger
+
+  # 入れ替え
+  #  plug Plug.Logger
+  plug LoginStudy.Plugs.Logger
 
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
