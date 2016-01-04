@@ -32,7 +32,7 @@ defmodule LoginStudy.LoginController do
       :error ->
         conn
         |> put_flash(:info, "メールアドレスもしくはパスワードが間違っています")
-        |> render :new
+        |> render(:new)
     end
   end
 
