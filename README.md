@@ -175,3 +175,12 @@ $ mix ecto.migrate
 
 ***** 【commit】 *****
 
+
+## ログ出力
+- ログをファイル出力
+
+logger_file_backend を追加して、backendsを登録
+
+***** 【commit】 *****
+
+

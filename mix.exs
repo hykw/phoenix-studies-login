@@ -18,8 +18,17 @@ defmodule LoginStudy.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {LoginStudy, []},
-     applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :mariaex, :comeonin]]
+      applications: [
+        :phoenix,
+        :phoenix_html,
+        :cowboy,
+        :logger,
+        :gettext,
+        :phoenix_ecto,
+        :mariaex,
+        :comeonin,
+        :logger_file_backend
+      ]]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,6 +46,7 @@ defmodule LoginStudy.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:comeonin, "~> 2.0"},
+     {:logger_file_backend , "~> 0.0.5"},
      {:cowboy, "~> 1.0"}]
   end
 

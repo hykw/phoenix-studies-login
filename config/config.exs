@@ -32,3 +32,25 @@ config :phoenix, :generators,
 # http://stackoverflow.com/questions/34538502/how-to-set-locale-for-errors-po
 # http://hexdocs.pm/gettext/Gettext.html
 config :login_study, LoginStudy.Gettext, default_locale: "ja"
+
+
+### ログのファイル出力
+# https://github.com/onkel-dirtus/logger_file_backend
+config :logger,
+backends: [
+  {LoggerFileBackend, :filelog_debug},
+  {LoggerFileBackend, :filelog_info_warn_error},
+]
+
+config :logger, :filelog_debug,
+  path: "logs/debug.log",
+  level: :debug,
+  format:   "$date $time [$level] $metadata $message\n",
+  metadata: [:request_id]
+
+config :logger, :filelog_info_warn_error,
+  path: "logs/phoenix.log",
+  level: :info,
+  format:   "$date $time [$level] $metadata $message\n",
+  metadata: [:request_id]
+
