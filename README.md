@@ -187,3 +187,12 @@ logger_file_backend を追加して、backendsを登録
 
 ***** 【commit】 *****
 
+## 特定URLにアクセス制限をかける
+
+- /admin, /admin/localonly を作成
+  - localhost からのアクセスはあらゆる OK
+  - 192.168.x.x からのアクセスもあらゆる OK
+  - 10.x.x.x からのアクセスは、/admin/localonly だけ 403
+  - それ以外は、/admin も /admin/localonly も 403
+
+***** 【commit】 *****

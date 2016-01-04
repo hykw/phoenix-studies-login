@@ -1,4 +1,4 @@
-defmodule LoginStudy.Plugs.Logger do
+defmodule LoginStudy.Plug.Logger do
   import Plug.Conn
   require Logger
 
@@ -24,7 +24,7 @@ defmodule LoginStudy.Plugs.Logger do
       diff = :timer.now_diff(:os.timestamp(), before_time)
               |> div(1000) # to ms
 
-      str_resp_body = to_string(conn.resp_body)
+      str_resp_body = resp_body
 
       # debug_write()
 
@@ -37,7 +37,7 @@ defmodule LoginStudy.Plugs.Logger do
           "status:" <> to_string(conn.status),
           "size_res:" <> to_string(byte_size(str_resp_body)),
           "diff:" <> to_string(diff),
-          "ua:" <> req_header_m["user-agent"],
+          "ua:" <> (req_header_m["user-agent"] || ""),
           "referer:" <> (req_header_m["referer"] || ""),
         ], ",")
       )

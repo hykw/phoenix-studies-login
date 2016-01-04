@@ -7,11 +7,23 @@ defmodule LoginStudy.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+
+    plug LoginStudy.Plug.IPRestrict, [:all]
   end
 
   pipeline :api do
     plug :accepts, ["json"]
   end
+
+  # 信頼できるIP, ローカルIPはOK
+  pipeline :admin do
+    plug LoginStudy.Plug.IPRestrict, [:admin]
+  end
+  # 信頼できるIPもNG(ローカルIPだけOK)
+  pipeline :admin_local do
+    plug LoginStudy.Plug.IPRestrict, [:localonly]
+  end
+
 
   scope "/", LoginStudy do
     pipe_through :browser # Use the default browser stack
@@ -27,6 +39,24 @@ defmodule LoginStudy.Router do
     post   "/login",  LoginController, :create
 
     delete "/logout", LoginController, :delete
+  end
+
+
+  # IP制限テスト
+  scope "/admin", LoginStudy do
+    # Every time pipe_through/1 is called, the new pipelines are appended
+    # to the ones previously given.
+    pipe_through :browser
+    pipe_through :admin
+
+    get "/", AdminController, :index
+  end
+
+  scope "/admin", LoginStudy do
+    pipe_through :browser
+    pipe_through :admin_local
+
+    get "/localonly", AdminController, :localonly
   end
 
   # Other scopes may use custom stacks.
