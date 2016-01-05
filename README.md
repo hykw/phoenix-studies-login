@@ -211,3 +211,10 @@ mkdir priv/templates/mail/register
 使い所無いかもしれないけど、管理系で何かあるかも
 
 ***** 【commit】 *****
+
+
+## 環境変数から文字列を取得
+
+- 環境変数の Phoenix_Secret_String を取得して、画面に表示する
+  - social_login の App Secret とか DB のアカウント情報とかを VCS に入れたくない場合とかを想定
+
