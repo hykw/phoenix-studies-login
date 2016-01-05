@@ -27,7 +27,8 @@ defmodule LoginStudy.Mixfile do
         :phoenix_ecto,
         :mariaex,
         :comeonin,
-        :logger_file_backend
+        :logger_file_backend,
+        :tzdata
       ]]
   end
 
@@ -47,7 +48,9 @@ defmodule LoginStudy.Mixfile do
      {:gettext, "~> 0.9"},
      {:comeonin, "~> 2.0"},
      {:logger_file_backend , "~> 0.0.5"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:mailer, github: "antp/mailer"}
+   ]
   end
 
   # Aliases are shortcut or tasks specific to the current project.

@@ -26,9 +26,25 @@ defmodule LoginStudy.RegisterController do
       # ユーザ登録時、ログインも一緒に
 
       {:ok, user} ->
+        # メール通知
+        to = changeset.params["email"]
+
+        from = "foo@example.jp"
+        subject = "メール登録したよ"
+        template_mail = "register"
+
+        mail_data = [
+          msg: "登録ありがとう",
+          mail_address: to,
+        ]
+
+        # テスト中にメール送信されても困るので、無効化しとく
+#         email = Mailer.compose_email(from, to, subject, template_mail, mail_data)
+#         response = Mailer.send(email)
+
         conn
         |> put_session(:current_user, user.id)
-        |> put_flash(:info, "アカウントを作成(メールアドレス = " <> changeset.params["email"] <> ")")
+        |> put_flash(:info, "アカウントを作成(メールアドレス = " <> to <> ")")
         |> redirect(to: page_path(conn, :index))
 
       {:error, changeset} ->

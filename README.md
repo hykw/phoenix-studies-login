@@ -196,3 +196,11 @@ logger_file_backend を追加して、backendsを登録
   - それ以外は、/admin も /admin/localonly も 403
 
 ***** 【commit】 *****
+
+## アカウント登録時にメール通知
+
+```bash
+mkdir priv/templates/mail/register
+```
+
+***** 【commit】 *****

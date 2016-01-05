@@ -54,3 +54,13 @@ config :logger, :filelog_info_warn_error,
   format:   "$date $time\t[$level]\t$metadata\t$message\n",
   metadata: [:request_id]
 
+
+### メールの設定
+config :mailer,
+  # templates ディレクトリの指定
+  templates: "priv/templates/mail"
+
+config :mailer, :smtp_client,
+  transport: :smtp,
+  server: "localhost",
+  port: 25
