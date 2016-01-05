@@ -204,3 +204,10 @@ mkdir priv/templates/mail/register
 ```
 
 ***** 【commit】 *****
+
+
+## ID指定で無理やりログインする機能
+
+使い所無いかもしれないけど、管理系で何かあるかも
+
+***** 【commit】 *****

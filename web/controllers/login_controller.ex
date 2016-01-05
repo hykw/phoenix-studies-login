@@ -25,7 +25,7 @@ defmodule LoginStudy.LoginController do
         User.update_login_times(user, LoginStudy.Repo)
 
         conn
-        |> put_session(:current_user, user.id)
+        |> login(user.id)
         |> put_flash(:info, "ログインしました(id = " <> to_string(user.id) <> ")")
         |> redirect(to: page_path(conn, :index))
 
@@ -42,8 +42,36 @@ defmodule LoginStudy.LoginController do
   """
   def delete(conn, _) do
     conn
-    |> delete_session(:current_user)
+    |> logout()
     |> put_flash(:info, "ログアウトしました")
+    |> redirect(to: page_path(conn, :index))
+  end
+
+
+  defp login(conn, user_id) do
+    conn
+    |> put_session(:current_user, user_id)
+  end
+
+  defp logout(conn) do
+    conn
+    |> delete_session(:current_user)
+  end
+
+
+
+  @doc """
+  ID=1 で強制的にログインしちゃう
+  """
+  def login1(conn, _) do
+    # ログインしてたら、まずログアウト
+    if LoginStudy.Login.current_user(conn), do: logout(conn)
+
+    user_id = 1
+
+    conn
+    |> login(user_id)
+    |> put_flash(:info, "無理やりログインしました(id = " <> to_string(user_id) <> ")")
     |> redirect(to: page_path(conn, :index))
   end
 

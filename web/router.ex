@@ -39,6 +39,8 @@ defmodule LoginStudy.Router do
     post   "/login",  LoginController, :create
 
     delete "/logout", LoginController, :delete
+
+    get    "/login1",  LoginController, :login1
   end
 
 
