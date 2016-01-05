@@ -45,12 +45,12 @@ backends: [
 config :logger, :filelog_debug,
   path: "logs/debug.log",
   level: :debug,
-  format:   "$date $time [$level] $metadata $message\n",
+  format:   "$date $time\t[$level]\t$metadata\t$message\n",
   metadata: [:request_id]
 
 config :logger, :filelog_info_warn_error,
   path: "logs/phoenix.log",
   level: :info,
-  format:   "$date $time [$level] $metadata $message\n",
+  format:   "$date $time\t[$level]\t$metadata\t$message\n",
   metadata: [:request_id]
 

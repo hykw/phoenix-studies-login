@@ -37,10 +37,11 @@ defmodule LoginStudy.Plug.Logger do
           "status:" <> to_string(conn.status),
           "size_res:" <> to_string(byte_size(str_resp_body)),
           "diff:" <> to_string(diff),
-          "ua:" <> (req_header_m["user-agent"] || ""),
-          "referer:" <> (req_header_m["referer"] || ""),
-        ], ",")
+          "ua:" <> Map.get(req_header_m, "user-agent", ""),
+          "referer:" <> Map.get(req_header_m, "referer", ""),
+        ], "\t")
       )
+
       conn
     end)
   end
