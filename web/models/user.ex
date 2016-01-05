@@ -13,8 +13,8 @@ defmodule LoginStudy.User do
     timestamps
   end
 
-  @required_fields ~w(email password)
-  @optional_fields ~w(lastlogin_at login_times)
+  @required_fields ~w(email)
+  @optional_fields ~w(password hashed_password lastlogin_at login_times)
 
 
   @doc """
@@ -49,6 +49,7 @@ defmodule LoginStudy.User do
     changeset
     |> put_change(:hashed_password, hash_password(changeset.params["password"]))
     |> put_change(:lastlogin_at, now())
+    |> put_change(:login_times, 0)
     |> repo.insert()
   end
 
@@ -61,6 +62,7 @@ defmodule LoginStudy.User do
     # http://qiita.com/FL4TLiN3/items/5fcf57677a1c0123637d
     Ecto.DateTime.from_erl(:calendar.universal_time)
   end
+
 
   @doc """
   ログイン時間の更新
