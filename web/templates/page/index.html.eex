@@ -8,6 +8,12 @@
 取得した環境変数の値：<%= @env_secret %>
 </p>
 
+取得ファイルの中身
+<pre>
+<%= @file_contents %>
+</pre>
+
+
 <div class="row marketing">
   <div class="col-lg-6">
     <h4>Resources</h4>

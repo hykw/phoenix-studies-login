@@ -218,3 +218,12 @@ mkdir priv/templates/mail/register
 - 環境変数の Phoenix_Secret_String を取得して、画面に表示する
   - social_login の App Secret とか DB のアカウント情報とかを VCS に入れたくない場合とかを想定
 
+***** 【commit】 *****
+
+## ファイルの読み書きと、外部ファイルの実行
+
+- mix.lock の読み込み
+- /tmp/phoenix_test.txt の追記(/bin/date の出力結果)
+
+***** 【commit】 *****
+
