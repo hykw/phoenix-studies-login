@@ -17,4 +17,4 @@ erl_crash.dump
 /config/prod.secret.exs
 
 # 本運用の時は、こいつを生かすこと
-#/config/secrets
+/config/secrets
