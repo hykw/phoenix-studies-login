@@ -227,3 +227,10 @@ mkdir priv/templates/mail/register
 
 ***** 【commit】 *****
 
+## 秘密情報が書かれた config ファイルを読み込み
+
+- config/secrets/ 以下に、VCS に置きたくない情報を記載した config ファイルを置く
+- .gitignore に追加
+  - サンプルでは、いったんコメントアウトして config/secrets 以下のファイルをコミットしてある
+- (dev|prd).exs で、ファイルを import_config
+- Application.get_env(:login_study, Social_Login, "取得失敗")[:facebook_private_key]

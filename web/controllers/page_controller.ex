@@ -9,6 +9,12 @@ defmodule LoginStudy.PageController do
       env_secret = "取得失敗"
     end
 
+    # 秘密のconfigの値を取得
+    config_private = Application.get_env(:login_study, Social_Login, "取得失敗")[:facebook_private_key]
+    # IO.inspect Application.get_all_env(:login_study)
+
+
+
     ## ファイルの読み書き
     # 読み込み
     file_read = "mix.lock"
@@ -19,12 +25,13 @@ defmodule LoginStudy.PageController do
 
     # 書き込み（追記）、しかも外部コマンド呼び出し
     file_write = "/tmp/phoenix_test.txt"
-    {cmd_result, exit_status} = System.cmd("/bin/date", [])
+    {cmd_result, _exit_status} = System.cmd("/bin/date", [])
     File.write(file_write, cmd_result, [:append])
 
 
     assigns = [
       env_secret: env_secret,
+      config_private: config_private,
       file_contents: file_contents,
     ]
 

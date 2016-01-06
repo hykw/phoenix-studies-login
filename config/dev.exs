@@ -41,3 +41,5 @@ config :login_study, LoginStudy.Repo,
   database: "phoenix_studies_login",
   hostname: "localhost",
   pool_size: 10
+
+import_config "secrets/#{Mix.env}.secrets.exs"

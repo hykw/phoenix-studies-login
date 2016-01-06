@@ -8,6 +8,10 @@
 取得した環境変数の値：<%= @env_secret %>
 </p>
 
+<p>
+秘密のconfigの private_key の値：<%= @config_private %>
+</p>
+
 取得ファイルの中身
 <pre>
 <%= @file_contents %>
