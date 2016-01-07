@@ -28,7 +28,8 @@ defmodule LoginStudy.Mixfile do
         :mariaex,
         :comeonin,
         :logger_file_backend,
-        :tzdata
+        :tzdata,
+        :httpoison
       ]]
   end
 
@@ -49,7 +50,9 @@ defmodule LoginStudy.Mixfile do
      {:comeonin, "~> 2.0"},
      {:logger_file_backend , "~> 0.0.5"},
      {:cowboy, "~> 1.0"},
-     {:mailer, github: "antp/mailer"}
+     {:mailer, github: "antp/mailer"},
+     {:httpoison, "~> 0.8.0"},
+     {:poison, "~> 1.5"}
    ]
   end
 

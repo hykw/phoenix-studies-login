@@ -212,7 +212,6 @@ mkdir priv/templates/mail/register
 
 ***** 【commit】 *****
 
-
 ## 環境変数から文字列を取得
 
 - 環境変数の Phoenix_Secret_String を取得して、画面に表示する
@@ -233,4 +232,16 @@ mkdir priv/templates/mail/register
 - .gitignore に追加
   - サンプルでは、いったんコメントアウトして config/secrets 以下のファイルをコミットしてある
 - (dev|prd).exs で、ファイルを import_config
-- Application.get_env(:login_study, Social_Login, "取得失敗")[:facebook_private_key]
+- `Application.get_env(:login_study, Social_Login, "取得失敗")[:facebook_private_key]`
+
+***** 【commit】 *****
+
+
+## ソーシャルログイン
+### Facebook
+
+データ登録はせず、取得したデータを表示するだけ
+with を使ってみた
+
+- [Facebook ページの作成手順](documents/social_login/facebook.md)
+

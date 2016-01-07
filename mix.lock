@@ -10,6 +10,7 @@
   "gen_smtp": {:hex, :gen_smtp, "0.9.0"},
   "gettext": {:hex, :gettext, "0.9.0"},
   "hackney": {:hex, :hackney, "1.4.8"},
+  "httpoison": {:hex, :httpoison, "0.8.0"},
   "idna": {:hex, :idna, "1.0.3"},
   "logger_file_backend": {:hex, :logger_file_backend, "0.0.5"},
   "mailer": {:git, "https://github.com/antp/mailer.git", "e638d4ef9d97761856cb116a3aa65c04cf6ac4a0", []},

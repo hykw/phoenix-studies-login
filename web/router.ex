@@ -61,6 +61,25 @@ defmodule LoginStudy.Router do
     get "/localonly", AdminController, :localonly
   end
 
+
+  ### ソーシャルログイン
+  scope "/social_login", LoginStudy do
+    pipe_through :browser
+
+    get "/facebook_login", SocialLoginController, :facebook_login
+    get "/facebook", SocialLoginController, :facebook_redirect_back
+
+
+    #    get "/twitter_login", SocialLoginController, :twitter_login
+
+
+    # 戻ってきた
+#     get "/oauth_twitter", SocialTwitterController, :oauth_twitter
+
+  end
+
+
+
   # Other scopes may use custom stacks.
   # scope "/api", LoginStudy do
   #   pipe_through :api
