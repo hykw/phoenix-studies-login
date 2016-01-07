@@ -245,3 +245,10 @@ with を使ってみた
 
 - [Facebook ページの作成手順](documents/social_login/facebook.md)
 
+***** 【commit】 *****
+
+### scrogson/oauth2 で実装しなおした
+
+- https://github.com/scrogson/oauth2
+
+***** 【commit】 *****
