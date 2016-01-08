@@ -43,3 +43,14 @@ config :login_study, LoginStudy.Repo,
   pool_size: 10
 
 import_config "secrets/#{Mix.env}.secrets.exs"
+
+# Überauth
+config :ueberauth, Ueberauth,
+providers: [
+  facebook: {Ueberauth.Strategy.Facebook, [
+      profile_fields: "name,email",
+      request_path: "/social_login/facebook",
+      callback_path: "/social_login/facebook_callback/"
+    ]}
+
+]

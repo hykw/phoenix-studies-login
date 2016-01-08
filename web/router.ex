@@ -66,15 +66,17 @@ defmodule LoginStudy.Router do
   scope "/social_login", LoginStudy do
     pipe_through :browser
 
-    get "/facebook_login", SocialLoginController, :facebook_login
-    get "/facebook", SocialLoginController, :facebook_redirect_back
+    #    get "/:provider", SocialLoginController, :request
+    #    get "/:provider/callback", SocialLoginController, :callback
+
+    # plug Ueberauth を設定したコントローラが、OAuth2サーバへのリダイレクトを
+    # いいように処理してくれる。atom は何でもいい。
+    get "/facebook", SocialLoginController, :dummy
+
+    # callback されるURL
+    get "/facebook_callback", SocialLoginController, :facebook_callback
 
 
-    #    get "/twitter_login", SocialLoginController, :twitter_login
-
-
-    # 戻ってきた
-#     get "/oauth_twitter", SocialTwitterController, :oauth_twitter
 
   end
 

@@ -1,43 +1,36 @@
 defmodule LoginStudy.SocialLoginController do
   use LoginStudy.Web, :controller
 
+  plug Ueberauth
+
+
   ### Facebook
-  def facebook_login(conn, _params) do
-    redirect conn, external: Facebook.authorize_url!
-  end
+  def facebook_callback(%{ assigns: %{ ueberauth_failure: fails } } = conn, params) do
+    error_description = params["error_description"]
+    error_msg = "取得エラー(" <> error_description <> ")"
 
-  @doc """
-  facebook から戻ってきた時の処理
-  """
-  def facebook_redirect_back(conn, %{"code" => code}) do
-
-    access_token = Facebook.get_token!(code: code)
-
-    fields = "id,name,birthday,email"
-    locale = "ja_JP"
-    url_me = "/me?fields=#{fields}&locale=#{locale}"
-
-    case OAuth2.AccessToken.get!(access_token, url_me) do
-      %OAuth2.Response{status_code: status_code, body: body} when status_code in 200..399 ->
-        parse_facebook_userdata(conn, body)
-
-      _ ->
-        error_description = "取得エラー"
-        render_data = render(conn, "redirect_error.html", error_msg: error_description)
-    end
-  end
-
-  defp parse_facebook_userdata(conn, json_user_data) do
-    ud = Poison.Decode.decode(json_user_data, [])
-
-    name = ud["name"]
-    email = ud["email"]
-    id = ud["id"]
-
-    parsed_userdata = "#{name}, #{email}, #{id}"
-    render(conn, "got.html", social_data: parsed_userdata)
+    conn
+    |> put_flash(:error, error_msg)
+    |> redirect(to: page_path(conn, :index))
   end
 
 
+  # ダイアログで email の権限を落とした場合
+  def facebook_callback(%{ assigns: %{ueberauth_auth: auth}, assigns: %{ueberauth_auth: %{ info: %{ email: nil } }}} = conn, params) do
+    error_msg = "メールアドレスが取得できませんでした"
+
+    conn
+    |> put_flash(:error, error_msg)
+    |> redirect(to: page_path(conn, :index))
+  end
+
+
+  def facebook_callback(%{ assigns: %{ueberauth_auth: auth} } = conn, params) do
+    social_data = "#{auth.info.name}, #{auth.info.email}"
+
+    conn
+    |> put_flash(:info, "取得できた(" <> social_data <> ")")
+    |> redirect(to: page_path(conn, :index))
+  end
 
 end

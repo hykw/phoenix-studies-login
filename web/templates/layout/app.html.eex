@@ -30,7 +30,7 @@
             <li><%= link "ログイン", to: login_path(@conn, :new) %></li>
             <li><%= link "ID1でログインしちゃう", to: login_path(@conn, :login1) %></li>
 
-            <li><%= link "facebook login", to: social_login_path(@conn, :facebook_login) %></li>
+            <li><%= link "facebook login", to: "/social_login/facebook" %></li>
           <% end %>
 
 <!--

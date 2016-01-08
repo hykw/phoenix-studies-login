@@ -23,7 +23,7 @@
 
 - Advanced
   - Client OAuth Settings
-    - Valid OAuth redirect URIs: http://example.jp/social_login/facebook/
+    - Valid OAuth redirect URIs: http://example.jp/social_login/facebook_callback/
 
 - Status & Review
     - publicに公開する？(= !sandbox): Yes

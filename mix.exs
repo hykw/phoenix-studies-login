@@ -29,7 +29,9 @@ defmodule LoginStudy.Mixfile do
         :comeonin,
         :logger_file_backend,
         :tzdata,
-        :oauth2
+
+        :ueberauth,
+        :ueberauth_facebook
       ]]
   end
 
@@ -52,7 +54,10 @@ defmodule LoginStudy.Mixfile do
      {:cowboy, "~> 1.0"},
      {:mailer, github: "antp/mailer"},
      {:poison, "~> 1.5"},
-     {:oauth2, "~> 0.5"}
+
+     {:ueberauth, "~> 0.2"},
+     {:ueberauth_facebook, "~> 0.2"}
+
 
    ]
   end

@@ -28,4 +28,6 @@
   "ranch": {:hex, :ranch, "1.2.0"},
   "ssl_verify_hostname": {:hex, :ssl_verify_hostname, "1.0.5"},
   "timex": {:hex, :timex, "1.0.0"},
-  "tzdata": {:hex, :tzdata, "0.5.6"}}
+  "tzdata": {:hex, :tzdata, "0.5.6"},
+  "ueberauth": {:hex, :ueberauth, "0.2.0"},
+  "ueberauth_facebook": {:hex, :ueberauth_facebook, "0.2.1"}}

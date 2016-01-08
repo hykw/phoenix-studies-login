@@ -247,8 +247,13 @@ with を使ってみた
 
 ***** 【commit】 *****
 
-### scrogson/oauth2 で実装しなおした
+#### scrogson/oauth2 で実装しなおした
 
 - https://github.com/scrogson/oauth2
 
 ***** 【commit】 *****
+
+#### ueberauth/ueberauth で実装しなおした
+
+- https://github.com/ueberauth/ueberauth
+
