@@ -1,9 +1,14 @@
 use Mix.Config
 
 config :login_study, Social_Login,
-  facebook_public_key: "xxx",
-  facebook_private_key: "yyy",
-  facebook_redirect_uri: "http://example.jp/social_login/facebook/",
+  facebook_private_key: "facebook_private_keyの値"
 
-  twitter_public_key: "xxx",
-  twitter_private_key: "yyy"
+
+
+config :ueberauth, Ueberauth.Strategy.Facebook.OAuth,
+  client_id: "xxxxxxxxxxxx",
+  client_secret: "yyyyyyyyyyyy"
+
+config :ueberauth, Ueberauth.Strategy.Twitter.OAuth,
+  consumer_key: "xxxxxxxxxxxx",
+  consumer_secret: "yyyyyyyyyy"
