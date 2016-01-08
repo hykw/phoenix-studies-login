@@ -39,7 +39,7 @@ defmodule LoginStudy.User do
     #    |> validate_format(:password, ~r/^[0-9]*$/, [message: "あいうえお"])
 
 
-  @doc """
+  ~S"""
   userレコードを作成
   """
   def create(changeset, repo) do
@@ -64,12 +64,12 @@ defmodule LoginStudy.User do
   end
 
 
-  @doc """
+  ~S"""
   ログイン時間の更新
   """
   def update_lastlogin(user, repo) do
 
-    """
+    ~S"""
     validation をすっ飛ばしたい場合は change() を使う
 
       # changsetのchanges に直接injectするため、validationは飛ばされちゃう
@@ -83,7 +83,7 @@ defmodule LoginStudy.User do
     changeset = LoginStudy.User.changeset(user, %{lastlogin_at: now()})
     # changeset = LoginStudy.User.changeset(user, %{email: "aaaa.com"})
 
-    """
+    ~S"""
     ここで changeset.valid? が true かどうかのチェックをいれてもいいけど、
       ・repo.update を呼び出してもエラーになるわけでもないし（もちろんUPDATEもされない）
       ・ユーザ入力値が無いので、エラーになる可能性が低い
@@ -93,7 +93,7 @@ defmodule LoginStudy.User do
     repo.update changeset
   end
 
-  @doc """
+  ~S"""
   ログイン回数の更新
   """
   def update_login_times(user, repo) do

@@ -1,7 +1,7 @@
 defmodule LoginStudy.Login do
   alias LoginStudy.User
 
-  @doc """
+  ~S"""
   ログイン処理
   """
   def login(params, repo) do
@@ -12,7 +12,7 @@ defmodule LoginStudy.Login do
     end
   end
 
-  @doc """
+  ~S"""
   認証処理
   """
   defp authenticate(user, password) do
@@ -23,7 +23,7 @@ defmodule LoginStudy.Login do
   end
 
 
-  @doc """
+  ~S"""
   現在のログインユーザを取得
   """
   def current_user(conn) do
@@ -34,7 +34,7 @@ defmodule LoginStudy.Login do
   end
 
 
-  @doc """
+  ~S"""
   ログインしているかどうかを返す
   """
   def logged_in?(conn) do

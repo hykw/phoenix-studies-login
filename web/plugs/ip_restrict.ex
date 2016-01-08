@@ -8,7 +8,8 @@ defmodule LoginStudy.Plug.IPRestrict do
 
   def call(conn, params) do
 
-    """
+
+    ~S"""
     localhost からのアクセスはあらゆる OK
 
     192.168.x.x からのアクセスもあらゆる OK

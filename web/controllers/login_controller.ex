@@ -2,7 +2,7 @@ defmodule LoginStudy.LoginController do
   use LoginStudy.Web, :controller
   alias LoginStudy.User
 
-  @doc """
+  ~S"""
   ログイン画面の表示
   """
   def new(conn, _params) do
@@ -10,7 +10,7 @@ defmodule LoginStudy.LoginController do
   end
 
 
-  @doc """
+  ~S"""
   ログイン処理
   """
   def create(conn, %{"login" => session_params}) do
@@ -37,7 +37,7 @@ defmodule LoginStudy.LoginController do
   end
 
 
-  @doc """
+  ~S"""
   ログアウト
   """
   def delete(conn, _) do
@@ -60,7 +60,7 @@ defmodule LoginStudy.LoginController do
 
 
 
-  @doc """
+  ~S"""
   ID=1 で強制的にログインしちゃう
   """
   def login1(conn, _) do

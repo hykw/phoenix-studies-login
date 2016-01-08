@@ -6,7 +6,7 @@ defmodule LoginStudy.RegisterController do
   /register のコントローラ
   """
 
-  @doc """
+  ~S"""
   新規表示
   """
   def new(conn, _params) do
@@ -15,7 +15,7 @@ defmodule LoginStudy.RegisterController do
     render(conn, :new, changeset: changeset)
   end
 
-  @doc """
+  ~S"""
   登録処理
   """
   def create(conn, %{"user" => user_params}) do
