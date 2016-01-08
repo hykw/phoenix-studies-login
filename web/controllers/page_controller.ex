@@ -11,7 +11,6 @@ defmodule LoginStudy.PageController do
 
     # 秘密のconfigの値を取得
     config_private = Application.get_env(:login_study, Social_Login, "取得失敗")[:facebook_private_key]
-    # IO.inspect Application.get_all_env(:login_study)
 
 
 

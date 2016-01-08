@@ -72,9 +72,11 @@ defmodule LoginStudy.Router do
     # plug Ueberauth を設定したコントローラが、OAuth2サーバへのリダイレクトを
     # いいように処理してくれる。atom は何でもいい。
     get "/facebook", SocialLoginController, :dummy
+    get "/twitter", SocialLoginController, :dummy
 
     # callback されるURL
     get "/facebook_callback", SocialLoginController, :facebook_callback
+    get "/twitter_callback", SocialLoginController, :twitter_callback
 
 
 

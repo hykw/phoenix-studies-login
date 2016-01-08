@@ -31,7 +31,8 @@ defmodule LoginStudy.Mixfile do
         :tzdata,
 
         :ueberauth,
-        :ueberauth_facebook
+        :ueberauth_facebook,
+        :ueberauth_twitter
       ]]
   end
 
@@ -56,8 +57,10 @@ defmodule LoginStudy.Mixfile do
      {:poison, "~> 1.5"},
 
      {:ueberauth, "~> 0.2"},
-     {:ueberauth_facebook, "~> 0.2"}
+     {:ueberauth_facebook, "~> 0.2"},
 
+     {:oauth, github: "tim/erlang-oauth"},
+     {:ueberauth_twitter, "~> 0.2"}
 
    ]
   end

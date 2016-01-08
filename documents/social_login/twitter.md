@@ -7,7 +7,7 @@
   - Name: phoenix-studies-login
   - Description: phoenix-studies-login
   - Website: http://example.jp/
-  - Callback URL: http://example.jp/social_login/twitter/
+  - Callback URL: http://example.jp/social_login/twitter_callback/
 
 ## 作成後の設定
 - Permissions

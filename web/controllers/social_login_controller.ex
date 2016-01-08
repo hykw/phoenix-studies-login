@@ -7,7 +7,7 @@ defmodule LoginStudy.SocialLoginController do
   ### Facebook
   def facebook_callback(%{ assigns: %{ ueberauth_failure: fails } } = conn, params) do
     error_description = params["error_description"]
-    error_msg = "取得エラー(" <> error_description <> ")"
+    error_msg = "facebook:取得エラー(" <> error_description <> ")"
 
     conn
     |> put_flash(:error, error_msg)
@@ -17,7 +17,7 @@ defmodule LoginStudy.SocialLoginController do
 
   # ダイアログで email の権限を落とした場合
   def facebook_callback(%{ assigns: %{ueberauth_auth: auth}, assigns: %{ueberauth_auth: %{ info: %{ email: nil } }}} = conn, params) do
-    error_msg = "メールアドレスが取得できませんでした"
+    error_msg = "facebook:メールアドレスが取得できませんでした"
 
     conn
     |> put_flash(:error, error_msg)
@@ -29,8 +29,33 @@ defmodule LoginStudy.SocialLoginController do
     social_data = "#{auth.info.name}, #{auth.info.email}"
 
     conn
-    |> put_flash(:info, "取得できた(" <> social_data <> ")")
+    |> put_flash(:info, "facebook:取得できた(" <> social_data <> ")")
     |> redirect(to: page_path(conn, :index))
   end
+
+  ##################################################
+
+  ### Twitter
+  def twitter_callback(%{ assigns: %{ ueberauth_failure: fails } } = conn, params) do
+    # twitter はエラー理由はほとんど返さないのでシンプル
+    error_msg = "twitter:取得エラー"
+
+    conn
+    |> put_flash(:error, error_msg)
+    |> redirect(to: page_path(conn, :index))
+  end
+
+
+  def twitter_callback(%{ assigns: %{ueberauth_auth: auth} } = conn, params) do
+    IO.inspect auth
+
+    # emailは取れない
+    social_data = "#{auth.info.name}"
+
+    conn
+    |> put_flash(:info, "twitter:取得できた(" <> social_data <> ")")
+    |> redirect(to: page_path(conn, :index))
+  end
+
 
 end

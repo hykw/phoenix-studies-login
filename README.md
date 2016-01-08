@@ -257,3 +257,9 @@ with を使ってみた
 
 - https://github.com/ueberauth/ueberauth
 
+### Twitter
+
+実装は ueberauth_twitter を利用
+
+- [Twitter ページの作成手順](documents/social_login/twitter.md)
+

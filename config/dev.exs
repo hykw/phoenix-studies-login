@@ -51,6 +51,10 @@ providers: [
       profile_fields: "name,email",
       request_path: "/social_login/facebook",
       callback_path: "/social_login/facebook_callback/"
+    ]},
+  twitter: {Ueberauth.Strategy.Twitter, [
+      request_path: "/social_login/twitter",
+      callback_path: "/social_login/twitter_callback/"
     ]}
 
 ]

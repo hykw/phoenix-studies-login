@@ -31,6 +31,7 @@
             <li><%= link "ID1でログインしちゃう", to: login_path(@conn, :login1) %></li>
 
             <li><%= link "facebook login", to: "/social_login/facebook" %></li>
+            <li><%= link "twitter login", to: "/social_login/twitter" %></li>
           <% end %>
 
 <!--
