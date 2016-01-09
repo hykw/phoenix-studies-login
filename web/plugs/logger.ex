@@ -5,9 +5,9 @@ defmodule LoginStudy.Plug.Logger do
   def init(default), do: default
 
   def call(conn, _default) do
-    Logger.info(fn ->
-      [conn.method, ?\s, conn.request_path]
-    end)
+#     Logger.info(fn ->
+#       [conn.method, ?\s, conn.request_path]
+#     end)
 
     before_time = :os.timestamp()
     conn
@@ -25,8 +25,6 @@ defmodule LoginStudy.Plug.Logger do
               |> div(1000) # to ms
 
       str_resp_body = resp_body
-
-      # debug_write()
 
       Logger.info(
         Enum.join([
