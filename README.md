@@ -257,9 +257,20 @@ with を使ってみた
 
 - https://github.com/ueberauth/ueberauth
 
+***** 【commit】 *****
+
 ### Twitter
 
 実装は ueberauth_twitter を利用
 
 - [Twitter ページの作成手順](documents/social_login/twitter.md)
+
+***** 【commit】 *****
+
+## cookieの読み書き
+
+- / にアクセスしたら、COUNT の値を+1する
+  - cookieの単純な読み書きで実装
+
+***** 【commit】 *****
 

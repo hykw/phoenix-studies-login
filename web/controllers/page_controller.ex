@@ -34,6 +34,18 @@ defmodule LoginStudy.PageController do
       file_contents: file_contents,
     ]
 
-    render(conn, :index, assigns)
+
+    ### cookie の読み書き
+    cookie_key = "COUNT"
+    max_age = 60*60*24 * 7
+
+    count = conn.cookies
+    |> Map.get(cookie_key, "0")
+    |> String.to_integer()
+
+    conn
+    |> Plug.Conn.put_resp_cookie(cookie_key, to_string(count+1))
+    |> render(:index, assigns)
+
   end
 end
