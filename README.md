@@ -274,3 +274,6 @@ with を使ってみた
 
 ***** 【commit】 *****
 
+- `pipe_through :browser` 内で、PIPE_COOKIE の値を+1する
+
+***** 【commit】 *****

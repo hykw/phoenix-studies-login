@@ -9,6 +9,7 @@ defmodule LoginStudy.Router do
     plug :put_secure_browser_headers
 
     plug LoginStudy.Plug.IPRestrict, [:all]
+    plug LoginStudy.Plug.BrowserCookie
   end
 
   pipeline :api do
