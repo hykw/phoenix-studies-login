@@ -10,6 +10,9 @@ defmodule LoginStudy.User do
     # 保存しないので virtual field として定義
     field :password, :string, virtual: true
 
+    has_many :login_history, LoginStudy.LoginHistory
+
+
     timestamps
   end
 

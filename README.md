@@ -284,7 +284,6 @@ with を使ってみた
   - passlists テーブルに、上記で取得した値を ecto で INSERT
 
 ### コマンド
-Userモデル、usersテーブルの作成準備
 
 ```bash
 $ mix phoenix.gen.model DBTest passlists hashed_password:string
@@ -312,4 +311,61 @@ mysql > desc passlists;
 - passlists にレコード INSERT して (auto)commit
 
 ***** 【commit】 *****
+
+
+### 親子関係のテーブルの読み書き
+
+- ログインの度に、user.id の子テーブルにレコードを登録
+  - put_flash で、レコード数を表示
+
+```bash
+$ mix phoenix.gen.model LoginHistory login_history login_at:datetime user_id:integer
+```
+
+- マイグレーションファイルを編集、timestamps 削除、複合インデックス追加
+  - `create index(:login_history, [:user_id, :login_at], concurrently: true)` にすると、MySQLの場合 SQL エラーになるので注意
+
+```elixir:priv/repo/migrations/20160112073452_create_login_history.exs
+defmodule LoginStudy.Repo.Migrations.CreateLoginHistory do
+  use Ecto.Migration
+  @disable_ddl_transaction true
+
+  def change do
+    create table(:login_history) do
+      add :login_at, :datetime
+      add :user_id, :integer
+    end
+
+    create index(:login_history, [:user_id, :login_at])
+
+  end
+end
+```
+
+```bash
+$ mix ecto.migrate
+```
+
+- 親子関係の紐付け
+  - web/models/users.ex
+  - web/models/login_history.ex
+
+- iex で確認
+```elixir
+iex> alias LoginStudy.User
+iex> alias LoginStudy.LoginHistory
+iex> alias LoginStudy.Repo
+
+iex> user_param = %{email: "foo@example.jp", hashed_password: "pass", login_times: 0}
+iex> Repo.insert!(User.changeset(%User{}, user_param))
+
+iex> history_param = %{login_at: "2016-01-12 08:09:10", user_id: 11}
+iex> Repo.insert!(LoginHistory.changeset(%LoginHistory{}, history_param))
+
+iex> user = Repo.get(User, 11) |> Repo.preload(:login_history)
+iex> login_history = Repo.get(LoginHistory, 1) |> Repo.preload(:user)
+```
+
+***** 【commit】 *****
+
 
