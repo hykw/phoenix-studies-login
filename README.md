@@ -305,3 +305,11 @@ mysql > desc passlists;
 
 ***** 【commit】 *****
 
+### transaction 内での実行
+
+- passlists にレコード INSERT して (auto)commit
+- passlists にレコード INSERT して rollback
+- passlists にレコード INSERT して (auto)commit
+
+***** 【commit】 *****
+
