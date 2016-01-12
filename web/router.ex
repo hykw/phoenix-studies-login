@@ -42,6 +42,9 @@ defmodule LoginStudy.Router do
     delete "/logout", LoginController, :delete
 
     get    "/login1",  LoginController, :login1
+
+
+    get    "/dbtest",  DBTestController, :dbtest
   end
 
 

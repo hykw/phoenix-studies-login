@@ -277,3 +277,31 @@ with を使ってみた
 - `pipe_through :browser` 内で、PIPE_COOKIE の値を+1する
 
 ***** 【commit】 *****
+
+## DBの読み書き
+
+- `SELECT hashed_password FROM users WHERE id = 1` を ecto で実行
+  - passlists テーブルに、上記で取得した値を ecto で INSERT
+
+### コマンド
+Userモデル、usersテーブルの作成準備
+
+```bash
+$ mix phoenix.gen.model DBTest passlists hashed_password:string
+$ mix ecto.migrate
+```
+
+```
+mysql > desc passlists;
++-----------------+---------------------+------+-----+---------+----------------+
+| Field           | Type                | Null | Key | Default | Extra          |
++-----------------+---------------------+------+-----+---------+----------------+
+| id              | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+| hashed_password | varchar(255)        | YES  |     | NULL    |                |
+| inserted_at     | datetime            | NO   |     | NULL    |                |
+| updated_at      | datetime            | NO   |     | NULL    |                |
++-----------------+---------------------+------+-----+---------+----------------+
+```
+
+***** 【commit】 *****
+

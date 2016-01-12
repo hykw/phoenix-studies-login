@@ -32,6 +32,7 @@
 
             <li><%= link "facebook login", to: "/social_login/facebook" %></li>
             <li><%= link "twitter login", to: "/social_login/twitter" %></li>
+            <li><%= link "DB読み書きテスト", to: db_test_path(@conn, :dbtest) %></li>
           <% end %>
 
 <!--
