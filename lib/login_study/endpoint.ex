@@ -36,7 +36,8 @@ defmodule LoginStudy.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_login_study_key",
-    signing_salt: "0vMEQtSg"
+    signing_salt: "0vMEQtSg",
+    max_age: 86400
 
   plug LoginStudy.Router
 end
