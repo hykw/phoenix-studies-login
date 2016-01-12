@@ -5,7 +5,7 @@ defmodule LoginStudy.SocialLoginController do
 
 
   ### Facebook
-  def facebook_callback(%{ assigns: %{ ueberauth_failure: fails } } = conn, params) do
+  def facebook_callback(%{ assigns: %{ ueberauth_failure: _fails } } = conn, params) do
     error_description = params["error_description"]
     error_msg = "facebook:取得エラー(" <> error_description <> ")"
 
@@ -16,7 +16,7 @@ defmodule LoginStudy.SocialLoginController do
 
 
   # ダイアログで email の権限を落とした場合
-  def facebook_callback(%{ assigns: %{ueberauth_auth: auth}, assigns: %{ueberauth_auth: %{ info: %{ email: nil } }}} = conn, params) do
+  def facebook_callback(%{ assigns: %{ueberauth_auth: _auth}, assigns: %{ueberauth_auth: %{ info: %{ email: nil } }}} = conn, _params) do
     error_msg = "facebook:メールアドレスが取得できませんでした"
 
     conn
@@ -25,7 +25,7 @@ defmodule LoginStudy.SocialLoginController do
   end
 
 
-  def facebook_callback(%{ assigns: %{ueberauth_auth: auth} } = conn, params) do
+  def facebook_callback(%{ assigns: %{ueberauth_auth: auth} } = conn, _params) do
     social_data = "#{auth.info.name}, #{auth.info.email}"
 
     conn
@@ -36,7 +36,7 @@ defmodule LoginStudy.SocialLoginController do
   ##################################################
 
   ### Twitter
-  def twitter_callback(%{ assigns: %{ ueberauth_failure: fails } } = conn, params) do
+  def twitter_callback(%{ assigns: %{ ueberauth_failure: fails } } = conn, _params) do
     # twitter はエラー理由はほとんど返さないのでシンプル
     error_msg = "twitter:取得エラー"
 
@@ -46,7 +46,7 @@ defmodule LoginStudy.SocialLoginController do
   end
 
 
-  def twitter_callback(%{ assigns: %{ueberauth_auth: auth} } = conn, params) do
+  def twitter_callback(%{ assigns: %{ueberauth_auth: auth} } = conn, _params) do
     IO.inspect auth
 
     # emailは取れない

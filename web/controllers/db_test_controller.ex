@@ -62,9 +62,9 @@ defmodule LoginStudy.DBTestController do
     # 三回目(commit)
     if end_flag == false do
       case LoginStudy.Repo.transaction(fn ->
-        changeset_hash = DBTest.changeset(%DBTest{}, params)
-                          |> LoginStudy.DBTest.changeset(%{hashed_password: hash})
-                          |> LoginStudy.DBTest.create(LoginStudy.Repo)
+        DBTest.changeset(%DBTest{}, params)
+        |> LoginStudy.DBTest.changeset(%{hashed_password: hash})
+        |> LoginStudy.DBTest.create(LoginStudy.Repo)
 
       end) do
         {:error, _} ->

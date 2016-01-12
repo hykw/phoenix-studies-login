@@ -37,7 +37,6 @@ defmodule LoginStudy.PageController do
 
     ### cookie の読み書き
     cookie_key = "COUNT"
-    max_age = 60*60*24 * 7
 
     count = conn.cookies
     |> Map.get(cookie_key, "0")
