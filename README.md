@@ -379,3 +379,12 @@ iex> login_history = Repo.get(LoginHistory, 1) |> Repo.preload(:user)
 
 - ログアウト時は delete_session/2 ではなく configure_session/2 を使って、サーバサイドからもセッションをクリア
 
+***** 【commit】 *****
+
+
+## Phoenix を 1.1.1 → 1.1.2 にアップデート
+
+- https://gist.github.com/chrismccord/d5bc5f8e38c8f76cad33 の手順通りで OK
+  - `--no-brunch` で mix phoenix.new してるので、brunch-config.js は編集不要（というかファイルがない）
+
+***** 【commit】 *****
