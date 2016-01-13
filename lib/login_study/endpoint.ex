@@ -34,10 +34,16 @@ defmodule LoginStudy.Endpoint do
   plug Plug.Head
 
   plug Plug.Session,
-    store: :cookie,
-    key: "_login_study_key",
+  #  key: "_login_study_key",
+  #  signing_salt: "0vMEQtSg"
+    store: :memcached,
+    key: "session_key",
+    table: :memcached_sessions,
     signing_salt: "0vMEQtSg",
-    max_age: 86400
+    encryption_salt: "12345",
+
+    #    secure: true,
+    max_age: 86400 * 365  # 1year
 
   plug LoginStudy.Router
 end

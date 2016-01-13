@@ -32,7 +32,10 @@ defmodule LoginStudy.Mixfile do
 
         :ueberauth,
         :ueberauth_facebook,
-        :ueberauth_twitter
+        :ueberauth_twitter,
+
+        :plug_session_memcached
+
       ]]
   end
 
@@ -60,7 +63,10 @@ defmodule LoginStudy.Mixfile do
      {:ueberauth_facebook, "~> 0.2"},
 
      {:oauth, github: "tim/erlang-oauth"},
-     {:ueberauth_twitter, "~> 0.2"}
+     {:ueberauth_twitter, "~> 0.2"},
+
+     {:plug_session_memcached, "~> 0.3.2" },
+     {:mcd, github: "EchoTeam/mcd"}
 
    ]
   end

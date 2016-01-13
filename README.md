@@ -369,3 +369,13 @@ iex> login_history = Repo.get(LoginHistory, 1) |> Repo.preload(:user)
 ***** 【commit】 *****
 
 
+## セッション管理を memcached に
+
+- https://github.com/gutschilla/plug-session-memcached を使う
+  - memcached は localhost:11211 で動作しているとする
+
+- ログイン時、ログイン日時をセッションに保存
+  - ログインメールアドレスの横に、日時を表示
+
+- ログアウト時は delete_session/2 ではなく configure_session/2 を使って、サーバサイドからもセッションをクリア
+

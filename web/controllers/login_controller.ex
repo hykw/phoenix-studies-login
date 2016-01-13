@@ -49,13 +49,24 @@ defmodule LoginStudy.LoginController do
 
 
   defp login(conn, user_id) do
+    # ログイン時、セッションにログイン日時をセット
+    now_datetime = Ecto.DateTime.from_erl(:calendar.universal_time)
+    now = Ecto.DateTime.to_string(now_datetime)
+
+
     conn
     |> put_session(:current_user, user_id)
+    |> put_session(:login_at, now)
   end
 
   defp logout(conn) do
+
+    # 下記だと、cookie が削除されるだけでサーバ側のセッションは残ったままになる
+  #    conn
+  #  |> delete_session(:current_user)
+
     conn
-    |> delete_session(:current_user)
+    |> configure_session(drop: true)
   end
 
 
