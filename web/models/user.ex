@@ -29,9 +29,13 @@ defmodule LoginStudy.User do
   def changeset(model, params \\ :empty) do
     # http://hexdocs.pm/ecto/Ecto.Changeset.html#functions
 
+
+    # パラメータの正規化
+    normalized_params = normalize_parameter(params)
+
     # テストのため、パスワードは数字2〜4桁のみOKとする
     model
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(normalized_params, @required_fields, @optional_fields)
     |> update_change(:email, &String.downcase/1)
     |> unique_constraint(:email)
     |> validate_format(:email, ~r/@/)
@@ -40,6 +44,21 @@ defmodule LoginStudy.User do
   end
 
     #    |> validate_format(:password, ~r/^[0-9]*$/, [message: "あいうえお"])
+
+
+  def normalize_parameter(params) do
+    email = python_multibytes(params["email"])
+    password = python_multibytes(params["password"])
+
+    %{ params | "email" => email, "password" => password }
+  end
+
+  def python_multibytes(nil) do "" end
+  def python_multibytes(arg) do
+    {cmd_result, _exit_status} = System.cmd("python", ["priv/python/multibytes.py", arg])
+    String.rstrip(cmd_result)
+  end
+
 
 
   ~S"""

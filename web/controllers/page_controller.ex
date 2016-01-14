@@ -27,7 +27,6 @@ defmodule LoginStudy.PageController do
     {cmd_result, _exit_status} = System.cmd("/bin/date", [])
     File.write(file_write, cmd_result, [:append])
 
-
     assigns = [
       env_secret: env_secret,
       config_private: config_private,

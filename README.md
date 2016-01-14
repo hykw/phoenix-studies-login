@@ -388,3 +388,10 @@ iex> login_history = Repo.get(LoginHistory, 1) |> Repo.preload(:user)
   - `--no-brunch` で mix phoenix.new してるので、brunch-config.js は編集不要（というかファイルがない）
 
 ***** 【commit】 *****
+
+## Pythonの外部ファイルを呼び出して、入力値を正規化
+
+System.cmd/2 で priv/python/multibytes.py を呼び出して、ユーザ入力値を正規化（全角→半角変換、とか）
+
+***** 【commit】 *****
+
