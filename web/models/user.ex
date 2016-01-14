@@ -60,7 +60,7 @@ defmodule LoginStudy.User do
 
   def python_multibytes(nil) do "" end
   def python_multibytes(arg) do
-    {cmd_result, exit_status} = System.cmd("python", ["priv/python/multibytes.py", arg], parallelism: false)
+    {cmd_result, exit_status} = System.cmd("python", ["priv/python/multibytes.py", arg], parallelism: true)
 
     # 何かエラーが起きた時は、変換しないでまま返す
     if exit_status === 0 do
