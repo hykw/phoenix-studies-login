@@ -91,7 +91,6 @@ if __name__ == '__main__':
     argv = sys.argv
     argc = len(argv)
 
-
     ret = ""
     if (argc == 2):
         ret = MultiBytes.zenAlphaNum2hanAlphaNum(argv[1])

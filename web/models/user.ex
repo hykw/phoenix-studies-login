@@ -47,16 +47,28 @@ defmodule LoginStudy.User do
 
 
   def normalize_parameter(params) do
-    email = python_multibytes(params["email"])
-    password = python_multibytes(params["password"])
+    if params === :empty do
+      params
+    else
+      email = python_multibytes(params["email"])
+      password = python_multibytes(params["password"])
 
-    %{ params | "email" => email, "password" => password }
+      %{ params | "email" => email, "password" => password }
+    end
+
   end
 
   def python_multibytes(nil) do "" end
   def python_multibytes(arg) do
-    {cmd_result, _exit_status} = System.cmd("python", ["priv/python/multibytes.py", arg])
-    String.rstrip(cmd_result)
+    {cmd_result, exit_status} = System.cmd("python", ["priv/python/multibytes.py", arg], parallelism: false)
+
+    # 何かエラーが起きた時は、変換しないでまま返す
+    if exit_status === 0 do
+      String.rstrip(cmd_result)
+    else
+      arg
+    end
+
   end
 
 
