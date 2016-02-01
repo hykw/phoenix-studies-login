@@ -50,7 +50,8 @@ providers: [
   facebook: {Ueberauth.Strategy.Facebook, [
       profile_fields: "name,email",
       request_path: "/social_login/facebook",
-      callback_path: "/social_login/facebook_callback/"
+      callback_path: "/social_login/facebook_callback/",
+      auth_type: "rerequest",
     ]},
   twitter: {Ueberauth.Strategy.Twitter, [
       request_path: "/social_login/twitter",
