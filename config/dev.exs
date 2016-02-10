@@ -52,6 +52,7 @@ providers: [
       request_path: "/social_login/facebook",
       callback_path: "/social_login/facebook_callback/",
       auth_type: "rerequest",
+      locale: "ja_JP",
     ]},
   twitter: {Ueberauth.Strategy.Twitter, [
       request_path: "/social_login/twitter",
